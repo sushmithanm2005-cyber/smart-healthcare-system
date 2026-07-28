@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 210 40% 98%;        /* #F8FAFC */
+        --foreground: 222 47% 11%;        /* #0F172A */
+        --card: 0 0% 100%;
+        --card-foreground: 222 47% 11%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222 47% 11%;
+        --primary: 174 78% 26%;            /* #0F766E teal-700 */
+        --primary-foreground: 0 0% 100%;
+        --secondary: 174 60% 95%;
+        --secondary-foreground: 174 78% 18%;
+        --muted: 215 16% 95%;
+        --muted-foreground: 215 16% 47%;   /* #64748B */
+        --accent: 174 60% 95%;
+        --accent-foreground: 174 78% 18%;
+        --destructive: 349 89% 49%;        /* #E11D48 */
+        --destructive-foreground: 0 0% 100%;
+        --border: 214 32% 91%;             /* #E2E8F0 */
+        --input: 214 32% 91%;
+        --ring: 174 78% 26%;
+        --chart-1: 174 78% 36%;
+        --chart-2: 38 92% 50%;
+        --chart-3: 349 89% 60%;
+        --chart-4: 217 91% 60%;
+        --chart-5: 271 81% 56%;
+        --radius: 0.625rem;
+    }
+    .dark {
+        --background: 222 47% 5%;          /* #020617 */
+        --foreground: 210 40% 98%;
+        --card: 222 47% 11%;               /* #0F172A */
+        --card-foreground: 210 40% 98%;
+        --popover: 222 47% 11%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 173 80% 40%;            /* #14B8A6 */
+        --primary-foreground: 222 47% 5%;
+        --secondary: 217 33% 17%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217 33% 17%;
+        --muted-foreground: 215 20% 65%;
+        --accent: 217 33% 17%;
+        --accent-foreground: 210 40% 98%;
+        --destructive: 349 89% 60%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 217 33% 17%;             /* #1E293B */
+        --input: 217 33% 17%;
+        --ring: 173 80% 40%;
+        --chart-1: 173 80% 50%;
+        --chart-2: 38 92% 60%;
+        --chart-3: 349 89% 65%;
+        --chart-4: 217 91% 65%;
+        --chart-5: 271 81% 66%;
+    }
+}
+
+@layer base {
+    * { @apply border-border; }
+    html, body, #root { height: 100%; }
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Manrope', system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    h1, h2, h3, h4, h5 {
+        font-family: 'Outfit', system-ui, sans-serif;
+        letter-spacing: -0.015em;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: hsl(var(--border)); border-radius: 999px; }
+::-webkit-scrollbar-thumb:hover { background: hsl(var(--muted-foreground) / 0.6); }
+
+/* Subtle grain texture for hero areas */
+.grain {
+    background-image:
+        radial-gradient(hsl(var(--primary) / 0.06) 1px, transparent 1px);
+    background-size: 14px 14px;
+}
+
+.glass {
+    backdrop-filter: blur(18px);
+    background: hsl(var(--card) / 0.6);
+    border: 1px solid hsl(var(--border) / 0.5);
+}
+
+/* ECG pulse animation accent */
+@keyframes pulse-line {
+    0%, 100% { stroke-dashoffset: 0; }
+    50% { stroke-dashoffset: -20; }
+}
+.ecg-line { stroke-dasharray: 8 4; animation: pulse-line 2s linear infinite; }
